@@ -1,0 +1,132 @@
+项目说明:
+    仿优酷项目
+
+ATM + 购物车：
+    1.用户功能层
+    2.接口层
+    3.数据层
+        dict ---> json
+
+        优点:
+            可跨平台，所有语言都可以使用
+
+        缺点:
+            不能存储对象。
+
+选课系统:
+    1.用户功能层
+    2.接口层
+    3.数据层
+        对象 ---> pickle
+
+        优点:
+            存取效率高，是python自带的，可存对象。
+
+        缺点:
+            不可跨平台。
+
+仿优酷系统:
+    C:
+        1.用户功能层
+
+    S:
+        2.接口层
+
+        - ORM
+            - 存: 把对象 ---> json ---> mysql
+            - 取: mysql ---> json ---> 对象
+
+            对象.方法 去操作数据库。
+            对象.save(对象（一堆名称空间）)  # insert into ...
+            对象.update()  # update xxx set ...
+            对象.select()  # select * from ...
+
+            写一条sql语句，适用于多个对象去调用。
+
+        3.数据层
+            - MySQL
+                - pymysql
+
+
+
+
+Client:
+    接收用户输入的数据，把数据传给Server端。
+
+Server:
+    处理用户输入的数据，然后把结果返回给客户端。
+
+    - 接口层
+        处理业务逻辑
+
+    - 数据层
+        - orm 操作数据库Mysql
+        - Mysql
+
+
+设计表:
+    - 用户表: User
+        - id
+        - name
+        - pwd
+        - register_time 注册时间
+        - is_vip 是否是VIP  0/1
+        - is_locked 是否被锁定 0/1
+        - user_type 管理员用户/普通用户
+
+    - 电影表  Movie
+        - id
+        - m_name
+        - is_free  免费/收费 0/1
+        - is_delete  电影是否被删除
+        - file_md5  校验电影文件的唯一性
+        - path  电影的存放目录
+        - upload_time  电影上传时间
+        - user_id
+
+    - 公告表  Notice
+        - id
+        - title
+        - content
+        - create_time
+        - user_id
+
+    - 下载记录表 DownloadRecord
+        - id
+        - user_id
+        - movie_id
+        - download_time
+
+
+
+管理员
+    1 注册
+    2 登录
+    3 上传视频
+    4 删除视频
+    5 发布公告
+
+用户
+    1 注册
+    2 登录
+    3 冲会员
+    4 查看视频
+    5 下载免费视频
+    6 下载收费视频
+    7 查看观影记录
+    8 查看公告
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
